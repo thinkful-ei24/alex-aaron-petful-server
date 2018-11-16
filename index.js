@@ -33,10 +33,12 @@ app.get('/api/cat', (req, res, next) => {
 });
 
 app.delete('/api/dog', (req, res, next) => {
+  dogQueue.enqueue(dogQueue.first.value);
   dogQueue.dequeue();
   res.json(dogQueue.first.value);
 });
 app.delete('/api/cat', (req, res, next) => {
+  catQueue.enqueue(catQueue.first.value);
   catQueue.dequeue();
   res.json(catQueue.first.value);
 });
